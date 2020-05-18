@@ -57,6 +57,7 @@ export const downloadSong = (identity) => (dispatch, getState) => {
               })
               let req = request.get({
                 url: `${BEATSAVER_BASE_URL}${song.downloadURL}`,
+                Header: { "User-Agent": "BeatDrop" },
                 encoding: null
               }, (err, r, data) => {
                 try {
@@ -254,6 +255,7 @@ export const downloadSong = (identity) => (dispatch, getState) => {
         })
         let req = request.get({
           url: `${BEATSAVER_BASE_URL}/${ song.downloadURL }`,
+          Header: { "User-Agent": "BeatDrop" },
           encoding: null
         }, (err, r, data) => {
           try {

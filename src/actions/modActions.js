@@ -270,7 +270,7 @@ export const installMod = (modName, version, dependencyOf = '') => (dispatch, ge
 
       // Install Mod
       if(mod.downloads.some(version => version.type === 'universal')) {
-        req = request.get({ url: `${BEATMODS_BASE_URL}${mod.downloads.filter(version => version.type === 'universal')[0].url}`, encoding: null }, (err, r, data) => {
+        req = request.get({ url: `${BEATMODS_BASE_URL}${mod.downloads.filter(version => version.type === 'universal')[0].url}`, encoding: null, Header: { "User-Agent": "BeatDrop" } }, (err, r, data) => {
           if(err) {
             dispatch({
               type: DISPLAY_WARNING,
@@ -320,7 +320,7 @@ export const installMod = (modName, version, dependencyOf = '') => (dispatch, ge
       } else {
         let installationType = getState().settings.installationType
         if(mod.downloads.some(version => version.type === installationType)) {
-          req = request.get({ url: `${BEATMODS_BASE_URL}${mod.downloads.filter(version => version.type === installationType)[0].url}`, encoding: null }, (err, r, data) => {
+          req = request.get({ url: `${BEATMODS_BASE_URL}${mod.downloads.filter(version => version.type === installationType)[0].url}`, encoding: null, Header: { "User-Agent": "BeatDrop" } }, (err, r, data) => {
             if(err) {
               dispatch({
                 type: DISPLAY_WARNING,
